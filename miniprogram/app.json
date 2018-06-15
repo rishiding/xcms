@@ -29,19 +29,19 @@
             },
             {
                 "pagePath": "pages/home/pages/category/index",
-                "text": "动态",
+                "text": "医院动态",
                 "iconPath": "images/news_icon.png",
                 "selectedIconPath": "images/news_hover_icon.png"
             },
             {
                 "pagePath": "pages/home/pages/goodslist/index",
-                "text": "产品",
+                "text": "医生信息",
                 "iconPath": "images/product_icon.png",
                 "selectedIconPath": "images/product_hover_icon.png"
             },
             {
-                "pagePath": "pages/home/pages/page/index",
-                "text": "联系",
+                "pagePath": "pages/home/pages/map/index",
+                "text": "联系我们",
                 "iconPath": "images/contact_icon.png",
                 "selectedIconPath": "images/contact_hover_icon.png"
             }

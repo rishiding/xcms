@@ -5,7 +5,8 @@
 // 此处主机域名是腾讯云解决方案分配的域名
 // 小程序后台服务解决方案：https://www.qcloud.com/solution/la
 
-var host = "14592619.qcloud.la"
+//var host = "aecd9ee7.ngrok.io"
+var host = "localhost"
 
 var config = {
 
@@ -37,7 +38,7 @@ var config = {
     downloadExampleUrl: `https://${host}/static/weapp.jpg`,
 
     // API 接口
-    appApiUrl: "http://www.xcxcms.com/api"
+    appApiUrl: `http://${host}/api`
 };
 
 module.exports = config

@@ -7,6 +7,7 @@
 </swiper>
 
 <!-- 产品中心 -->
+<!--
 <view class="banner_headline"><view class="title"><text class="htit">产品中心</text></view></view>
 <view class="page-section-spacing" style="margin-bottom:20px;">
     <scroll-view class="scroll-view_H" scroll-x="true" style="width: 100%">
@@ -15,9 +16,9 @@
         <image style="width: 150px; height: 100px; background-color: #eeeeee;" src="{{item.litpic}}"></image></navigator></view>
     </scroll-view>
 </view>
-
+-->
 <!-- 图文列表 -->
-<!--<view class="block-tit">最新动态</view>
+<view class="block-tit">最新动态</view>
 <view class="themes-list mb10">
     <view class="themes-list-box" wx:for="{{newsList}}" wx:key="unique">
         <navigator url="../detail/index?id={{item.id}}">
@@ -30,11 +31,11 @@
             </view>
         </navigator>
     </view>
-</view> -->
+</view> 
 
 <view class="block-tit">新闻资讯</view>
 
-<view class="ulist clear"><view wx:for="{{newsList}}" wx:key="unique">
+<view class="ulist clear"><view wx:for="{{newsList}}" wx:key="unique" class="themes-list-name">
 <navigator wx:if="{{item.litpic != ''}}" class="gpic" url="../detail/index?id={{item.id}}"><image src="{{item.litpic}}"></image></navigator>
 <navigator url="../detail/index?id={{item.id}}">{{item.title}}</navigator>
 </view></view>
@@ -55,7 +56,7 @@
                 </view>
             </navigator>
     </view>
-</view> -->
+</view> 
 
 <view class="block-tit">联系我们</view>
 <view class="ulist clear">
@@ -70,3 +71,4 @@
     <image class="ewmimg" src="../../../../images/xcxewm.jpg"></image>
     <text>{{intro}}</text>
 </view>
+-->
