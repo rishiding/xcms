@@ -5,7 +5,7 @@
     </swiper-item>
 </swiper>
  <view class="menu">
-     <navigator redirect="true" url="../index/index">
+     <navigator open-type='reLaunch' url="/pages/home/pages/index/index">
       <view class="item">
         <view class="icon menu_bg_01">
           <image src="/images/home.png"></image>
@@ -13,15 +13,8 @@
         <text>首页</text>
       </view>
     </navigator>
-    <navigator redirect="true"  url="../depts/index">
-      <view class="item">
-        <view class="icon menu_bg_02">
-          <image src="/images/product.png"></image>
-        </view>
-        <text>科室信息</text>
-      </view>
-    </navigator>   
-    <navigator redirect="true"  url="../category/index">
+   
+    <navigator open-type='reLaunch' url="/pages/home/pages/category/index">
       <view class="item">
         <view class="icon menu_bg_04">
           <image src="/images/news.png"></image>
@@ -29,7 +22,15 @@
         <text>新闻动态</text>
       </view>
     </navigator>
-    <navigator redirect="true"  url="../map/index">
+     <navigator open-type='reLaunch'  url="/pages/home/pages/depts/index">
+      <view class="item">
+        <view class="icon menu_bg_02">
+          <image src="/images/product.png"></image>
+        </view>
+        <text>科室信息</text>
+      </view>
+    </navigator>   
+    <navigator open-type='reLaunch'  url="/pages/home/pages/map/index">
       <view class="item">
         <view class="icon menu_bg_05">
           <image src="/images/contact.png"></image>
@@ -58,60 +59,5 @@
   </view> 
     
   </view>
-<!-- 图文列表 -->
-<!--
-<view class="block-tit">最新动态</view>
-<view class="themes-list mb10">
-    <view class="themes-list-box" wx:for="{{newsList}}" wx:key="unique">
-        <navigator url="../detail/index?id={{item.id}}">
-            <view wx:if="{{item.litpic != ''}}" class="themes-list-thumbnail">
-                <image class="themes-list-img" src="{{item.litpic}}" />
-            </view>
-            <view class="themes-list-main">
-                <view class="themes-list-name">{{item.title}}</view>
-                <view class="themes-list-description">{{item.description}}</view>
-            </view>
-        </navigator>
-    </view>
-</view> 
 
-<view class="block-tit">新闻资讯</view>
-
-<view class="ulist clear"><view wx:for="{{newsList}}" wx:key="unique" class="themes-list-name">
-<navigator wx:if="{{item.litpic != ''}}" class="gpic" url="../detail/index?id={{item.id}}"><image src="{{item.litpic}}"></image></navigator>
-<navigator url="../detail/index?id={{item.id}}">{{item.title}}</navigator>
-</view></view>
--->
-<!-- <view class="hot-main">
-    <view class="hot-main-box">
-        <view class="hot-main-title">精选</view>
-        <view class="hot-main-subtitle">呈现最新的精选日报</view>
-    </view>
-</view>
-
-<view class="hot-box-main">
-    <view wx:for="{{newsList}}" wx:for-index="i" wx:key="unique">
-        <navigator id="{{newsList[i].id}}" url="../detail/index?id={{newsList[i].id}}">
-                <view class="list-box">
-                    <view class="list-box-title">{{newsList[i].title}}</view>
-                    <view class="list-box-sub">{{newsList[i].pubdate}}</view>
-                </view>
-            </navigator>
-    </view>
-</view> 
-
-<view class="block-tit">联系我们</view>
-<view class="ulist clear">
-    <view><text style="color:#999;">联系人：</text>{{contact}}</view>
-    <view><text style="color:#999;">电子邮箱：</text>{{email}}</view>
-    <view bindtap="makePhoneCall"><text style="color:#999;">联系方式：</text>{{mobile}}</view>
-    <view><navigator url="../map/index"><text style="color:#999;">地址：</text>{{address}}</navigator></view>
-</view>
-
-<view class="block-tit">关于我们</view>
-<view class="box mt10 mb10">
-    <image class="ewmimg" src="../../../../images/xcxewm.jpg"></image>
-    <text>{{intro}}</text>
-</view>
--->
 </view>

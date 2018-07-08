@@ -1,6 +1,5 @@
 const util = require('../../../../utils/util.js');
 const config = require('../../../../config.js');
-var WxParse = require('../../../../vendor/wxParse/wxParse.js');
 //获取应用实例
 var app = getApp()
 Page({
@@ -35,7 +34,7 @@ Page({
       console.info(res.data.data.remarks);
       var article = res.data.data.remarks;
       //res.data.data.remarks
-      WxParse.wxParse('intro', 'html', article, that, 5);
+      
       // 重新写入数据
       that.setData({
         name: res.data.data.name,
