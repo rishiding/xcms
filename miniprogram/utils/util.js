@@ -72,6 +72,22 @@ module.exports = {
             }
         });
     },
+    /** 转义字符 */
+    formatStr: function (str) {
+      var s = "";
+      if (str.length == 0) return "";
+      s = str.replace(/&amp;/g, "&");
+      s = s.replace(/&lt;/g, "<");
+      s = s.replace(/&gt;/g, ">");
+      s = s.replace(/&nbsp;/g, " ");
+      s = s.replace(/&#39;/g, "\'");
+      s = s.replace(/&quot;/g, "\"");
+      s = s.replace(/&ldquo;/g,"“");
+      s = s.replace(/&rdquo;/g, "”");
+      s = s.replace(/&mdash;/g, "—");
+     
+      return s;
+    },
 
     /**
      * 获取格式化日期
@@ -91,16 +107,7 @@ module.exports = {
         var week = ['星期日', '星期一', '星期二', '星期三', '星期四', '星期五', '星期六'],
             day = new Date(dateDay).getDay();
 
-        // 获取前一天日期 根据今天日期获取前一天的日期
-        // var dateBefore = new Date( new Date( dateDay ) - 1000 * 60 * 60 * 24 ).toLocaleDateString();
-        // var dateBefore = dateBefore.split('/');
-        // if( dateBefore[1] < 10 ) {
-        //     dateBefore[1] = '0' + dateBefore[1];
-        // }
-        // if( dateBefore[2] < 10 ) {
-        //     dateBefore[2] = '0' + dateBefore[2];
-        // }
-        // dateBefore = dateBefore.join('');
+      
 
         return {
             "dateDay": MONTH + "月" + DATE + "日 " + week[day]

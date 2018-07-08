@@ -3,7 +3,7 @@
         "pages/home/pages/index/index",
         "pages/home/pages/category/index",
         "pages/home/pages/detail/index",
-        "pages/home/pages/goodslist/index",
+        "pages/home/pages/depts/index",
         "pages/home/pages/goodsdetail/index",
         "pages/home/pages/page/index",
         "pages/home/pages/tagindex/index",
@@ -11,11 +11,10 @@
         "pages/home/pages/map/index"
     ],
     "window": {
-        "backgroundTextStyle": "white",
-        "backgroundColor": "#FFF",
-        "navigationBarBackgroundColor": "#393a3f",
-        "navigationBarTitleText": "XCXCMS",
-        "navigationBarTextStyle": "white"
+      "backgroundTextStyle": "light",
+      "navigationBarBackgroundColor": "#fff",
+      "navigationBarTitleText": "duoyi",
+      "navigationBarTextStyle": "black"
     },
     "tabBar": {
         "borderStyle": "black",
@@ -29,13 +28,13 @@
             },
             {
                 "pagePath": "pages/home/pages/category/index",
-                "text": "医院动态",
+                "text": "新闻动态",
                 "iconPath": "images/news_icon.png",
                 "selectedIconPath": "images/news_hover_icon.png"
             },
             {
-                "pagePath": "pages/home/pages/goodslist/index",
-                "text": "医生信息",
+                "pagePath": "pages/home/pages/depts/index",
+                "text": "科室信息",
                 "iconPath": "images/product_icon.png",
                 "selectedIconPath": "images/product_hover_icon.png"
             },

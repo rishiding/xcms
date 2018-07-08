@@ -15,7 +15,69 @@ image{border:0;margin:0;padding:0;vertical-align:middle;}.cl{clear:both;}.fl{flo
 .content{font-size:16px;line-height:26px;}.content text{display:block;margin-bottom:1.35em;}.content u{color:red;text-decoration:none;}.content imgage{width:100%;display:block;height:auto;}
 .tit{font-size:22px;padding:10px;}.tith{font-weight:normal;font-size:22px;padding:10px;}
 .tit2,.dtit{font-size:20px;font-weight:700;background-color:#dfefd8;height:43px;color:#333;line-height:43px;padding-left:5px;border-top:solid 1px rgba(101,153,1, 0.4);}
+.menu_bg_01{ background: #F57D5B}
+.menu_bg_02{ background: #4AC6EA}
+.menu_bg_03{ background: #B2DE27}
+.menu_bg_04{ background: #F97BA0}
+.menu_bg_05{ background: #6495ED}
+.menu {
+  height: 150rpx;
+  width: 96%;
+  margin-left: 2%;
+  background: #fff;
+  margin-top: 20rpx;
+  padding-top: 20rpx;
+}
 
+.menu .item {
+  height: 150rpx;
+  float: left;
+  text-align: center;
+  width: 25%;
+}
 
+.menu .item image {
+  height: 40rpx;
+  width: 40rpx;
+  display: block;
+  float: left;
+  margin-left: 20rpx;
+  margin-top: 20rpx;
+}
+
+.menu .item .icon {
+  height: 80rpx;
+  width: 80rpx;
+  margin: 0 auto;
+  border-radius: 40rpx;
+}
+
+.menu .item  text {
+  height: 40rpx;
+  line-height: 40rpx;
+  margin-top: 10rpx;
+  display: block;
+  font-size: 26rpx;
+}
+.block {
+  width: 96%;
+  margin-left: 2%;
+  margin-top: 20rpx;
+  background: #fff;
+  height: auto;
+  overflow: hidden;
+  padding-top: 10rpx;
+  padding-bottom: 20rpx;
+}
+
+.block .title {
+  height: 70rpx;
+  line-height: 70rpx;
+  width: 96%;
+  font-size: 28rpx;
+  text-align: center;
+  margin-left: 3%;
+  border-bottom: 1rpx solid #f2f2f2;
+}
 
 

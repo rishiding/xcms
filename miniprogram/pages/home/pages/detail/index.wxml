@@ -1,4 +1,8 @@
-<view class="tith">{{post.title}}</view>
-
+<view class="tith">{{title}}</view>
+<view class="ulist clear">
+    <view><text style="color:#999;">发布日期：</text>{{createDate}}
+    <text style="color:#999;">浏览次数：</text>{{hits}}
+    </view>
+</view>
 <import src="../../../../vendor/wxParse/wxParse.wxml"/>
 <view class="box content mb10"><template is="wxParse" data="{{wxParseData:article.nodes}}"/></view>
