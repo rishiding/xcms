@@ -2,7 +2,7 @@
 <view class='app'>
   <view class='header' style='background:{{color}}'>
       <view wx:if="{{photo != ''}}" class='face'>
-          <image class="themes-list-img" src="{{server}}{{item.photo}}" />
+          <image class="themes-list-img" src="{{server}}{{photo}}" />
         </view>
         <view wx:if="{{photo == ''}}" class='face'>
             <image class="themes-list-img" src="/images/nopicture.jpg" />

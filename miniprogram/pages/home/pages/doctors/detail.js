@@ -1,4 +1,5 @@
 const util = require('../../../../utils/util.js');
+const config = require('../../../../config.js');
 var app = getApp();
 Page({
 
@@ -11,6 +12,7 @@ Page({
     title:'',
     remarks: '',
     photo:'',
+    server:config.server,
     deptName:''
   },
 
