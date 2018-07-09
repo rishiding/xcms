@@ -1,69 +1,15 @@
 const util = require('../../../../utils/util.js');
 const config = require('../../../../config.js');
-/*
-//获取应用实例
-var app = getApp()
 
-Page({
-    data: {
-        windowHeight: 0,
-        dataList: [],
-        loading: true,
-        hasMore: false,
-        limit: 8,
-        offset:0
-    },
-    onLoad: function () {
-        var that = this;
-        
-
-        // 新闻列表
-        util.AJAX("/article/index", function (res) {
-            // 重新写入数据
-            that.setData({
-                dataList: res.data.data.list
-            });
-        }, { "pageSize": this.data.pageSize, "pageNo": this.data.pageNo });
-    },
-    // 上拉加载更多
-    loadMore: function (e) {
-        var that = this;
-        this.setData({pageNo: this.data.pageNo + this.data.pageSize, loading: false, hasMore: true });
-        
-        util.AJAX("/article/index", function (res) {
-            
-            if (res.data.data.count > 0){
-                // 重新写入数据
-                that.setData({
-                    dataList: that.data.dataList.concat(res.data.data.list),
-                    loading: true,
-                    hasMore: false
-                });
-            }
-        }, { "pageSize": this.data.pageSize, "pageNo": this.data.pageNo });
-    },
-    // 下拉刷新
-    refresh: function (e) {
-        var that = this;
-        this.setData({ offset: 0, limit: 8, loading: true, hasMore: false });
-
-        // 新闻列表
-        util.AJAX("/article/index", function (res) {
-            // 重新写入数据
-            that.setData({
-                dataList: res.data.data.list
-            });
-        }, { "pageSize": this.data.pageSize, "pageNo": this.data.pageNo });
-    }
-})
-*/
 var app = getApp()
 Page({
   data: {
     currentTab: 0,
     lanmuList:[],
     newsList:[],
-    windowHeight: 0,
+    
+    windowWidth: wx.getSystemInfoSync().windowWidth, // 宽度,
+    windowHeight: wx.getSystemInfoSync().windowHeight, // 高度,
     loading: true,
     hasMore: false,
     pageSize: 8,
@@ -77,6 +23,7 @@ Page({
     wx.getSystemInfo({
       success: function (res) {
         that.setData({
+          windowWidth: res.windowWidth + "px",
           windowHeight: res.windowHeight + "px",
         });
       }
@@ -102,6 +49,41 @@ Page({
     },  { "hospitalid": config.hospitalid });
    
 
+  },
+
+  // 上拉加载更多
+  loadMore: function (e) {
+    var that = this;
+    this.setData({ pageNo: this.data.pageNo + 1, loading: false, hasMore: true });
+
+    util.AJAX("/category/categoryList", function (res) {
+      if (res.data.data.count > 0) {
+      var newsList = res.data.data.list;
+        for (var i = 0; i < newsList.length; i++) {
+          newsList[i]['title'] = util.formatStr(newsList[i]['title']);
+          newsList[i]['description'] = util.formatStr(newsList[i]['description']);
+        }
+        that.setData({
+          newsList: newsList
+        });
+      }
+    }, { "categoryId": this.data.currentTab,"pageSize": this.data.pageSize, "pageNo": this.data.pageNo });
+  },
+  // 下拉刷新
+  refresh: function (e) {
+    var that = this;
+    this.setData({ pageNo: 1, pageSize: 8, loading: true, hasMore: false });
+
+    util.AJAX("/category/categoryList", function (res) {
+      var newsList = res.data.data.list;
+      for (var i = 0; i < newsList.length; i++) {
+        newsList[i]['title'] = util.formatStr(newsList[i]['title']);
+        newsList[i]['description'] = util.formatStr(newsList[i]['description']);
+      }
+      that.setData({
+        newsList: newsList
+      });
+    }, { "categoryId": this.data.currentTab, "pageSize": this.data.pageSize, "pageNo": this.data.pageNo });;
   },
   //滑动切换
   swiperTab: function (e) {

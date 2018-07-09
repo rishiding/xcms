@@ -3,18 +3,17 @@
         "pages/home/pages/index/index",
         "pages/home/pages/category/index",
         "pages/home/pages/detail/index",
-        "pages/home/pages/depts/index",
-        "pages/home/pages/goodsdetail/index",
-        "pages/home/pages/page/index",
+        "pages/home/pages/doctors/index", 
+        "pages/home/pages/doctors/detail",        
         "pages/home/pages/tagindex/index",
         "pages/home/pages/taglist/index",
         "pages/home/pages/map/index"
     ],
     "window": {
       "backgroundTextStyle": "light",
-      "navigationBarBackgroundColor": "#fff",
-      "navigationBarTitleText": "健康咨询公司",
-      "navigationBarTextStyle": "black"
+      "navigationBarBackgroundColor": "#6EBBE7",
+      "navigationBarTitleText": "德里福健康",
+      "navigationBarTextStyle": "white"
     },
     "tabBar": {
         "borderStyle": "black",
@@ -33,8 +32,8 @@
                 "selectedIconPath": "images/news_hover_icon.png"
             },
             {
-                "pagePath": "pages/home/pages/depts/index",
-                "text": "科室信息",
+                "pagePath": "pages/home/pages/doctors/index",
+                "text": "医生信息",
                 "iconPath": "images/product_icon.png",
                 "selectedIconPath": "images/product_hover_icon.png"
             },

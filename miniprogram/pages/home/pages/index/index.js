@@ -74,25 +74,8 @@ Page({
                 newsList: newsList
             });
             
-        },  { "hospitalid": config.hospitalid ,pageSize:5});
- 
-        // 产品列
-        /**
-        util.AJAX("/goods/index", function (res) {
-            var goodsList = res.data.data.list;
-            if (goodsList) {
-                for (var i = 0; i < goodsList.length; i++) {
-                    var time = util.getTime(goodsList[i]['pubdate']);
-                    goodsList[i]['pubdate'] = time['Y'] + '-' + time['m'] + '-' + time['d'];
-                }
-            }
-
-            // 重新写入数据
-            that.setData({
-                goodsList: goodsList
-            });
-        }, { "limit": 8 });
-          */
+        },  { "hospitalid": config.hospitalid ,pageSize:5}); 
+        
     },
     //打电话
     makePhoneCall: function () {

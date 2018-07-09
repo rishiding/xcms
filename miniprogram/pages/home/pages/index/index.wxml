@@ -22,12 +22,12 @@
         <text>新闻动态</text>
       </view>
     </navigator>
-     <navigator open-type='reLaunch'  url="/pages/home/pages/depts/index">
+     <navigator open-type='reLaunch'  url="/pages/home/pages/doctors/index">
       <view class="item">
         <view class="icon menu_bg_02">
           <image src="/images/product.png"></image>
         </view>
-        <text>科室信息</text>
+        <text>医生信息</text>
       </view>
     </navigator>   
     <navigator open-type='reLaunch'  url="/pages/home/pages/map/index">
@@ -52,7 +52,7 @@
             </view>
             <view class="themes-list-main">
                 <view class="themes-list-name">{{item.title}}</view>
-                <view class="themes-list-description">{{item.description}}</view>
+                <view class="themes-list-description">【{{item.category.name}}】{{item.description}}</view>
             </view>
         </navigator>
     </view>

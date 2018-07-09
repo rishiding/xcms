@@ -1,0 +1,28 @@
+<!--pages/index/homepage.wxml-->
+<view class='app'>
+  <view class='header' style='background:{{color}}'>
+      <view wx:if="{{photo != ''}}" class='face'>
+          <image class="themes-list-img" src="{{server}}{{item.photo}}" />
+        </view>
+        <view wx:if="{{photo == ''}}" class='face'>
+            <image class="themes-list-img" src="/images/nopicture.jpg" />
+        </view>
+      
+    <view class='name'>{{name}}</view>
+    <view class='hinfo'>
+      <view class='lt'>临床科室：{{deptName}}</view>
+      <view class='rt'>推荐指数：5.0</view>
+    </view>
+  </view>
+
+  <view class='content'>
+    <view class='col'>
+      <view class='title'>
+        医生简介
+      </view>
+      <view class='info'>
+        <text>{{remarks}}</text>
+      </view>
+    </view>   
+  </view>
+</view>

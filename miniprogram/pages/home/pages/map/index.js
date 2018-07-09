@@ -31,8 +31,8 @@ Page({
       wx.setNavigationBarTitle({
         title: res.data.data.name,
       })  
-      console.info(res.data.data.remarks);
-      var article = res.data.data.remarks;
+      //console.info(res.data.data.remarks);
+      //var article = res.data.data.remarks;
       //res.data.data.remarks
       
       // 重新写入数据
