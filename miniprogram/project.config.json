@@ -9,8 +9,8 @@
 	},
 	"compileType": "miniprogram",
 	"libVersion": "1.6.6",
-	"appid": "touristappid",
-	"projectname": "多医院小程序",
+	"appid": "wx7d7fad3ab5969a0f",
+	"projectname": "%E5%BE%B7%E9%87%8C%E7%A6%8F%E5%81%A5%E5%BA%B7",
 	"condition": {
 		"search": {
 			"current": -1,
