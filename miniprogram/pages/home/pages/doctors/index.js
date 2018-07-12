@@ -11,6 +11,7 @@ Page({
     hasMore: false,
     pageSize: 8,
     pageNo: 1,
+    count:0,
     server: config.server,
   },
 
@@ -30,7 +31,8 @@ Page({
         var doctorsList = res1.data.data.list;
         
         that.setData({
-          doctorsList: doctorsList
+          doctorsList: doctorsList,
+          count: res1.data.data.count
         });
       }, { "hospitalid": app.globalData.hospitalid, "pageSize": this.data.pageSize, "pageNo": this.data.pageNo});    
 
@@ -40,7 +42,12 @@ Page({
   // 上拉加载更多
   loadMore: function (e) {
     var that = this;
-    this.setData({ pageNo: this.data.pageNo + 1, loading: false, hasMore: true });
+    var totalpage = Math.ceil(this.data.count / this.data.pageSize);
+    if (this.data.pageNo >= totalpage) {
+      that.setData({ loading: false, hasMore: false });
+      return;
+    }
+    that.setData({ pageNo: this.data.pageNo + 1, loading: false, hasMore: true });
 
     util.AJAX("/office/getDoctor", function (res) {
       if (res.data.data.count > 0) {
@@ -61,7 +68,8 @@ Page({
       var doctorsList = res.data.data.list;
      
       that.setData({
-        doctorsList: doctorsList
+        doctorsList: doctorsList,
+        count: res1.data.data.count
       });
     }, { "hospitalid": app.globalData.hospitalid, "pageSize": this.data.pageSize, "pageNo": this.data.pageNo });;
   }

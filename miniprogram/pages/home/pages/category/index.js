@@ -7,13 +7,14 @@ Page({
     currentTab: 0,
     lanmuList:[],
     newsList:[],
-    
+    totalpage:1,
     windowWidth: wx.getSystemInfoSync().windowWidth, // 宽度,
     windowHeight: wx.getSystemInfoSync().windowHeight, // 高度,
     loading: true,
     hasMore: false,
     pageSize: 8,
     pageNo: 1,
+    count:0,
     server: config.server,
   },
  
@@ -43,7 +44,8 @@ Page({
           newsList[i]['description'] = util.formatStr(newsList[i]['description']);
         }
         that.setData({
-          newsList: newsList
+          newsList: newsList,
+          count: res1.data.data.count
         });
       }, { "categoryId": res.data.data[0]['id'], "pageSize": 8, "pageNo": 1 });
     }, { "hospitalid": app.globalData.hospitalid });
@@ -54,9 +56,14 @@ Page({
   // 上拉加载更多
   loadMore: function (e) {
     var that = this;
-    this.setData({ pageNo: this.data.pageNo + 1, loading: false, hasMore: true });
+    var totalpage = Math.ceil(this.data.count/this.data.pageSize);
+    if (this.data.pageNo>=totalpage){
+      that.setData({ loading: false, hasMore: true });
+      return;
+    }
+    that.setData({ pageNo: this.data.pageNo + 1, loading: false, hasMore: true });
 
-    util.AJAX("/category/categoryList", function (res) {
+    util.AJAX("/category/articleList", function (res) {
       if (res.data.data.count > 0) {
       var newsList = res.data.data.list;
         for (var i = 0; i < newsList.length; i++) {
@@ -74,16 +81,17 @@ Page({
     var that = this;
     this.setData({ pageNo: 1, pageSize: 8, loading: true, hasMore: false });
 
-    util.AJAX("/category/categoryList", function (res) {
+    util.AJAX("/category/articleList", function (res) {
       var newsList = res.data.data.list;
       for (var i = 0; i < newsList.length; i++) {
         newsList[i]['title'] = util.formatStr(newsList[i]['title']);
         newsList[i]['description'] = util.formatStr(newsList[i]['description']);
-      }
+      } 
       that.setData({
-        newsList: newsList
+        newsList: newsList,        
+        count: res.data.data.count 
       });
-    }, { "categoryId": this.data.currentTab, "pageSize": this.data.pageSize, "pageNo": this.data.pageNo });;
+    }, { "categoryId": this.data.currentTab, "pageSize": this.data.pageSize, "pageNo": this.data.pageNo });
   },
   //滑动切换
   swiperTab: function (e) {
@@ -100,8 +108,7 @@ Page({
       return false;
     } else {
       util.AJAX("/category/articleList", function (res1) {
-        // console.log(res);
-        // 重新写入数据
+       
         var newsList = res1.data.data.list;
         for (var i = 0; i < newsList.length; i++) {
 
@@ -110,6 +117,7 @@ Page({
         }
         that.setData({
           newsList: newsList,
+          count: res1.data.data.count,          
           currentTab: e.target.dataset.current
         });
       }, { "categoryId": e.target.dataset.current, "pageSize": 8, "pageNo": 1 });
