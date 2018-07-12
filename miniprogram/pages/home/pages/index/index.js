@@ -22,14 +22,18 @@ Page({
         server: config.server,
     },
     onLoad: function (options) {
-      if (options.scene == "" || options.scene == undefined || options.scene == null){
-        wx.navigateTo({
-          url: '../hospital/index',
-        });
-        return;
+      if (app.globalData.hospitalid == ""){
+        if (options.scene == "" || options.scene == undefined || options.scene == null){
+          wx.navigateTo({
+            url: '../hospital/index',
+          });
+          return;
 
+        }else{
+          app.globalData.hospitalid = options.scene;
+        }
       }
-      app.globalData.hospitalid = options.scene;
+      
      
         var that = this;
         wx.getSystemInfo({
