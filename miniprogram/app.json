@@ -4,9 +4,8 @@
         "pages/home/pages/category/index",
         "pages/home/pages/detail/index",
         "pages/home/pages/doctors/index", 
-        "pages/home/pages/doctors/detail",        
-        "pages/home/pages/tagindex/index",
-        "pages/home/pages/taglist/index",
+        "pages/home/pages/doctors/detail",   
+        "pages/home/pages/hospital/index",     
         "pages/home/pages/map/index"
     ],
     "window": {

@@ -24,6 +24,6 @@ App({
     },
 
     globalData: {
-        userInfo: null
+        hospitalid: ''
     }
 })

@@ -9,7 +9,7 @@ Page({
     markers: [{
       latitude: 30.657420,
         longitude: 104.065840,
-        title: '××××××××××××二期48号'
+        title: ''
     }],
     circles: [{
       latitude: 30.657420,
@@ -19,10 +19,10 @@ Page({
       radius: 3000,
       strokeWidth: 1
     }],
-    contact: '丁先生',
-    mobile: "1588****451",
+    contact: '',
+    mobile: '',
     email: "77219569@qq.com",
-    address: "××××××××××××二期48号",
+    address: "",
     },
   onLoad: function () {
     var that = this; 
@@ -51,7 +51,7 @@ Page({
        
         mobile: res.data.data.phone
       });
-    }, { "hospitalid": config.hospitalid });
+    }, { "hospitalid": app.globalData.hospitalid });
   },
     //打电话
     makePhoneCall: function () {

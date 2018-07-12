@@ -1,0 +1,16 @@
+
+    <view class="themes-list mb10">
+    <view class="themes-list-box" wx:for="{{hospitalList}}" wx:key="unique">
+        <navigator open-type='reLaunch'  url="../index/index?scene={{item.id}}">
+            <view wx:if="{{item.logo != ''}}" class="themes-list-thumbnail">
+                <image class="themes-list-img" src="{{server}}{{item.logo}}" />
+            </view>
+            <view class="themes-list-main">
+                <view class="themes-list-name">{{item.name}}</view>
+                <view class="themes-list-description">{{item.grade}}</view>
+            </view>
+        </navigator>
+    </view>
+  </view> 
+
+

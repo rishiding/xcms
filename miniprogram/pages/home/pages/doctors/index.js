@@ -32,7 +32,7 @@ Page({
         that.setData({
           doctorsList: doctorsList
         });
-      }, { "hospitalid": config.hospitalid, "pageSize": this.data.pageSize, "pageNo": this.data.pageNo});    
+      }, { "hospitalid": app.globalData.hospitalid, "pageSize": this.data.pageSize, "pageNo": this.data.pageNo});    
 
 
   },
@@ -50,7 +50,7 @@ Page({
           doctorsList: doctorsList
         });
       }
-    }, { "hospitalid": config.hospitalid,"pageSize": this.data.pageSize, "pageNo": this.data.pageNo });
+    }, { "hospitalid": app.globalData.hospitalid,"pageSize": this.data.pageSize, "pageNo": this.data.pageNo });
   },
   // 下拉刷新
   refresh: function (e) {
@@ -63,7 +63,7 @@ Page({
       that.setData({
         doctorsList: doctorsList
       });
-    }, { "hospitalid": config.hospitalid, "pageSize": this.data.pageSize, "pageNo": this.data.pageNo });;
+    }, { "hospitalid": app.globalData.hospitalid, "pageSize": this.data.pageSize, "pageNo": this.data.pageNo });;
   }
   
   

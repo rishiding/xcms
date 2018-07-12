@@ -46,7 +46,7 @@ Page({
           newsList: newsList
         });
       }, { "categoryId": res.data.data[0]['id'], "pageSize": 8, "pageNo": 1 });
-    },  { "hospitalid": config.hospitalid });
+    }, { "hospitalid": app.globalData.hospitalid });
    
 
   },

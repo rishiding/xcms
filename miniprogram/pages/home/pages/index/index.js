@@ -8,23 +8,29 @@ Page({
         // 幻灯片数据
         slideList: [],
         // 最新动态列表
-        newsList: [],
-        // 产品列表
-        goodsList: [],
-        goodsList:[],
-
-        img: '../../images/logo.png',
-        title: '繁橙工作室',
-        intro: '医院介绍',
-        contact: '丁',
-        mobile: "15882454451",
-        email: "77219569@qq.com",
-        address: "成都市二环路",
+        newsList: [],  
+        img: '',
+        title: '',
+        intro: '',
+        contact: '',
+        mobile: "",
+        name:'',
+        email: "",
+        address: "",
         windowWidth: wx.getSystemInfoSync().windowWidth, // 宽度,
         windowHeight: wx.getSystemInfoSync().windowHeight, // 高度,
         server: config.server,
     },
-    onLoad: function () {
+    onLoad: function (options) {
+      if (options.scene == "" || options.scene == undefined || options.scene == null){
+        wx.navigateTo({
+          url: '../hospital/index',
+        });
+        return;
+
+      }
+      app.globalData.hospitalid = options.scene;
+     
         var that = this;
         wx.getSystemInfo({
             success: function (res) {
@@ -49,7 +55,8 @@ Page({
             mobile: res.data.data.phone
           
           });
-        }, { "hospitalid": config.hospitalid });
+          console.info(app.globalData.hospitalid);
+        }, { "hospitalid": app.globalData.hospitalid });
         // 幻灯片列表
         util.AJAX("/office/getBanners", function (res) {
         
@@ -58,10 +65,10 @@ Page({
           
             slideList: res.data.data
           });
-        }, { "hospitalid": config.hospitalid });
+        }, { "hospitalid": app.globalData.hospitalid });
 
         // 新闻列表
-      
+       
         util.AJAX("/category/news", function (res) {
             var newsList = res.data.data.list;
             for (var i = 0; i < newsList.length; i++) {
@@ -74,7 +81,7 @@ Page({
                 newsList: newsList
             });
             
-        },  { "hospitalid": config.hospitalid ,pageSize:5}); 
+        }, { "hospitalid": app.globalData.hospitalid ,pageSize:5}); 
         
     },
     //打电话
