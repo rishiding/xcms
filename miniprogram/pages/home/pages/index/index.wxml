@@ -1,7 +1,7 @@
 <view class="app">
 <swiper class="swiper-boxs" indicator-dots autoplay circular duration="300">
     <swiper-item wx:for="{{slideList}}" wx:key="unique">
-        <image model="aspectFit" style="width: {{windowWidth}}px;" class="swiper-boxs-img" src="{{server}}{{slideList[index].url}}" />
+        <image model="aspectFit" style="width: {{windowWidth}}px;" class="swiper-boxs-img" src="{{server}}{{slideList[index]}}" />
     </swiper-item>
 </swiper>
  <view class="menu">

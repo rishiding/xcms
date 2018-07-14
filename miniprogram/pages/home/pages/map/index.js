@@ -1,5 +1,3 @@
-const util = require('../../../../utils/util.js');
-const config = require('../../../../config.js');
 //获取应用实例
 var app = getApp()
 Page({
@@ -26,32 +24,28 @@ Page({
     },
   onLoad: function () {
     var that = this; 
-    // 幻灯片列表
-    util.AJAX("/office/getHospital", function (res) {   
+    
       wx.setNavigationBarTitle({
-        title: res.data.data.name,
+        title: app.hospitalData.name,
       })  
-      //console.info(res.data.data.remarks);
-      //var article = res.data.data.remarks;
-      //res.data.data.remarks
       
       // 重新写入数据
       that.setData({
-        name: res.data.data.name,
-        img: res.data.data.logo,
-        address: res.data.data.address,
-        contact: res.data.data.master,
-        latitude: res.data.data.lat,
-        longitude: res.data.data.lot,
+        name: app.hospitalData.name,
+        img: app.hospitalData.logo,
+        address: app.hospitalData.address,
+        contact: app.hospitalData.master,
+        latitude: app.hospitalData.lat,
+        longitude: app.hospitalData.lot,
         markers: [{
-          latitude: res.data.data.lat,
-          longitude: res.data.data.lot,
-          title: res.data.data.address
+          latitude: app.hospitalData.lat,
+          longitude: app.hospitalData.lot,
+          title: app.hospitalData.name
         }],
        
-        mobile: res.data.data.phone
+        mobile: app.hospitalData.phone
       });
-    }, { "hospitalid": app.globalData.hospitalid });
+   
   },
     //打电话
     makePhoneCall: function () {

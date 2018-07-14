@@ -22,6 +22,7 @@ Page({
         server: config.server,
     },
     onLoad: function (options) {
+      var that = this;
       if (app.globalData.hospitalid == ""){
         if (options.scene == "" || options.scene == undefined || options.scene == null){
           wx.navigateTo({
@@ -31,48 +32,58 @@ Page({
 
         }else{
           app.globalData.hospitalid = options.scene;
-        }
-      }
-      
-     
-        var that = this;
-        wx.getSystemInfo({
-            success: function (res) {
-                that.setData({
-                    windowHeight: res.windowHeight + "px",
-                    windowWidth: res.windowWidth + "px",
-                });
+          // 初始化全局医院数据
+          util.AJAX("/office/getHospital", function (res1) {
+            app.hospitalData.name = res1.data.data.name;
+            app.hospitalData.id = res1.data.data.id;
+            app.hospitalData.address = res1.data.data.address;
+            app.hospitalData.master = res1.data.data.master;
+            app.hospitalData.phone = res1.data.data.phone;
+            app.hospitalData.fax = res1.data.data.fax;
+            app.hospitalData.email = res1.data.data.email;
+            app.hospitalData.logo = res1.data.data.logo;            
+            app.hospitalData.lat = res1.data.data.lat;
+            app.hospitalData.lot = res1.data.data.lot;
+            app.hospitalData.gradeName = res1.data.data.gradeName;
+            var side = res1.data.data.banner.split('|');
+            var side1 = new Array();
+            for (var i = 0; i < side.length; i++) {
+              if(side[i]!=""){
+                side1.push(side[i]);
+              }
             }
-        }); 
-        // 幻灯片列表
-        util.AJAX("/office/getHospital", function (res) {
-        //  console.log(res); 
-          wx.setNavigationBarTitle({
-            title: res.data.data.name,
-          })
-          // 重新写入数据
-          that.setData({
-            name: res.data.data.name,
-            img: res.data.data.logo,
-            address: res.data.data.address,
-            contact: res.data.data.master,
-            mobile: res.data.data.phone
-          
-          });
-          console.info(app.globalData.hospitalid);
-        }, { "hospitalid": app.globalData.hospitalid });
-        // 幻灯片列表
-        util.AJAX("/office/getBanners", function (res) {
-        
-          // 重新写入数据
-          that.setData({
-          
-            slideList: res.data.data
-          });
-        }, { "hospitalid": app.globalData.hospitalid });
-
-        // 新闻列表
+            app.hospitalData.banner = side1;
+            wx.setNavigationBarTitle({
+              title: app.hospitalData.name,
+            });
+            // 重新写入数据
+            that.setData({
+              name: app.hospitalData.name,
+              img: app.hospitalData.logo,
+              address: app.hospitalData.address,
+              contact: app.hospitalData.master,
+              mobile: app.hospitalData.phone,
+              slideList: app.hospitalData.banner
+            });   
+          }, { "hospitalid": options.scene });
+        }
+      }else{    
        
+        wx.setNavigationBarTitle({
+          title: app.hospitalData.name,
+        });
+         // 重新写入数据
+        that.setData({
+          name: app.hospitalData.name,
+          img: app.hospitalData.logo,
+          address: app.hospitalData.address,
+          contact: app.hospitalData.master,
+          mobile: app.hospitalData.phone,
+          slideList: app.hospitalData.banner
+        });   
+      }    
+       
+        // 新闻列表       
         util.AJAX("/category/news", function (res) {
             var newsList = res.data.data.list;
             for (var i = 0; i < newsList.length; i++) {
@@ -85,7 +96,7 @@ Page({
                 newsList: newsList
             });
             
-        }, { "hospitalid": app.globalData.hospitalid ,pageSize:5}); 
+        }, { "hospitalid": app.globalData.hospitalid ,pageSize:8}); 
         
     },
     //打电话

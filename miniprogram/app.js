@@ -22,8 +22,23 @@ App({
             })
         }
     },
+    hospitalData:{
+      name:'',
+      id:'',
+      address:'',
+      master:'',
+      phone:'',
+      fax:'',
+      email:'',
+      logo:'',
+      banner:[],
+      lat:'',
+      lot:'',
+      gradeName:''
+    },
 
     globalData: {
-        hospitalid: ''
+        hospitalid: '',
+        userInfo:[]
     }
 })
