@@ -35,7 +35,7 @@ Page({
         name: util.formatStr(res.data.data.name),        
         remarks: res.data.data.remarks,
         photo: res.data.data.photo,
-        deptName: res.data.data.office.name,        
+        deptName: res.data.data.company.name,        
       });
     }, { "id": id });
  

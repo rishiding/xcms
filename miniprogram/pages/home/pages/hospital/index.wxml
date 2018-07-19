@@ -7,7 +7,7 @@
             </view>
             <view class="themes-list-main">
                 <view class="themes-list-name">{{item.name}}</view>
-                <view class="themes-list-description">{{item.grade}}</view>
+                
             </view>
         </navigator>
     </view>

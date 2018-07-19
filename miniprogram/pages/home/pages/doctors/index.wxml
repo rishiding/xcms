@@ -9,8 +9,8 @@
                 <image class="themes-list-img" src="/images/nopicture.jpg" />
               </view>
             <view class="themes-list-main">
-                <view class="themes-list-name">{{item.name}}-{{item.title}}</view>
-                <view class="themes-list-description">{{item.office.name}}</view>
+                <view class="themes-list-name">{{item.name}}</view>
+                <view class="themes-list-description">{{item.title}}</view>
             </view>
             </navigator>
         </view>
