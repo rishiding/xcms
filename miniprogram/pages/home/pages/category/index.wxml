@@ -5,7 +5,7 @@
     <view class="{{currentTab==lanmuList[index].id?'active':''}}" data-current="{{lanmuList[index].id}}" bindtap="clickTab">{{lanmuList[index].name}}</view>   
     </view>
 </view>
-<scroll-view style="height:{{windowHeight}}" class="page_list" scroll-y="true" bindscrolltolower="loadMore" bindscrolltoupper="refresh">
+<scroll-view style="height:{{windowHeight}}px" class="page_list" scroll-y="true" bindscrolltolower="loadMore" bindscrolltoupper="refresh">
     <view class="themes-list mb10">
         <view class="themes-list-box" wx:for="{{newsList}}" wx:key="index">
             <navigator url="../detail/index?id={{item.id}}">
