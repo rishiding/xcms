@@ -1,5 +1,4 @@
-const QQMapWX = require('../../../../utils/qqmap-wx-jssdk.min.js');
-var qqmapsdk;
+
 //获取应用实例
 var app = getApp()
 Page({
@@ -30,39 +29,24 @@ Page({
       wx.setNavigationBarTitle({
         title: app.hospitalData.name,
       })  
-      qqmapsdk = new QQMapWX({
-        key: 'ELVBZ-YMF6P-7RPDQ-L2SLM-MIYAJ-5NFW2'
-      });
-      qqmapsdk.reverseGeocoder({
-        location: {
+      
+      
+      // 重新写入数据
+      that.setData({
+        name: app.hospitalData.name,
+        img: app.hospitalData.logo,
+        address: app.hospitalData.address,
+        contact: app.hospitalData.master,
+        latitude: app.hospitalData.lat,
+        longitude: app.hospitalData.lot,
+        markers: [{
           latitude: app.hospitalData.lat,
-          longitude: app.hospitalData.lot
-        },
-        coord_type: 3,//baidu经纬度
-        success: function (res) {
-          console.info(res);
-          var location = res.result.location;
-          console.log(location)
-          // 重新写入数据
-          that.setData({
-            name: app.hospitalData.name,
-            img: app.hospitalData.logo,
-            address: app.hospitalData.address,
-            contact: app.hospitalData.master,
-            latitude: location.lat,
-            longitude: location.lng,
-            markers: [{
-              latitude: location.lat,
-              longitude: location.lng,
-              title: app.hospitalData.name
-            }],
+          longitude: app.hospitalData.lot,
+          title: app.hospitalData.name
+        }],
 
-            mobile: app.hospitalData.phone
-          });
-        }
+        mobile: app.hospitalData.phone
       });
-      
-      
    
   },
     //打电话

@@ -1,5 +1,7 @@
 const util = require('../../../../utils/util.js');
 const config = require('../../../../config.js');
+const QQMapWX = require('../../../../utils/qqmap-wx-jssdk.min.js');
+var qqmapsdk;
 //获取应用实例
 var app = getApp()
 
@@ -34,6 +36,22 @@ Page({
           app.globalData.hospitalid = options.scene;
           // 初始化全局医院数据
           util.AJAX("/office/getHospital", function (res1) {
+            qqmapsdk = new QQMapWX({
+              key: 'ELVBZ-YMF6P-7RPDQ-L2SLM-MIYAJ-5NFW2'
+            });
+            qqmapsdk.reverseGeocoder({
+              location: {
+                latitude: res1.data.data.lat,
+                longitude: res1.data.data.lot
+              },
+              coord_type: 3,//baidu经纬度
+              success: function (res) {               
+                var location = res.result.location;
+                app.hospitalData.lat = location.lat;
+                app.hospitalData.lot = location.lng;
+              }
+            });
+
             app.hospitalData.name = res1.data.data.name;
             app.hospitalData.id = res1.data.data.id;
             app.hospitalData.address = res1.data.data.address;
@@ -42,8 +60,7 @@ Page({
             app.hospitalData.fax = res1.data.data.fax;
             app.hospitalData.email = res1.data.data.email;
             app.hospitalData.logo = res1.data.data.logo;            
-            app.hospitalData.lat = res1.data.data.lat;
-            app.hospitalData.lot = res1.data.data.lot;
+           
             app.hospitalData.gradeName = res1.data.data.gradeName;
             var side = res1.data.data.banner.split('|');
             var side1 = new Array();
