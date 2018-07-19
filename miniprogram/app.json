@@ -32,7 +32,7 @@
             },
             {
                 "pagePath": "pages/home/pages/doctors/index",
-                "text": "医生信息",
+                "text": "专家信息",
                 "iconPath": "images/product_icon.png",
                 "selectedIconPath": "images/product_hover_icon.png"
             },
