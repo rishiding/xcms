@@ -10,8 +10,8 @@
       
     <view class='name'>{{name}}</view>
     <view class='hinfo'>
-      <view class='lt'>所属机构：{{deptName}}</view>
-      <view class='rt'>职称：{{title}}</view>
+      <view class='lt'>{{deptName}}</view>
+      <view class='rt'>{{title}}</view>
     </view>
   </view>
 
