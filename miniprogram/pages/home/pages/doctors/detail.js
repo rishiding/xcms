@@ -1,5 +1,6 @@
 const util = require('../../../../utils/util.js');
 const config = require('../../../../config.js');
+var WxParse = require('../../../../vendor/wxParse/wxParse.js');
 var app = getApp();
 Page({
 
@@ -24,16 +25,16 @@ Page({
     var id = options.id;
     util.AJAX("/office/docInfo", function (res) {
       //console.log(res);
-
+      WxParse.wxParse('article', 'html', res.data.data.remarks, that, 5);
       //console.log(res);
       // 重新写入数据
       wx.setNavigationBarTitle({
         title: res.data.data.name,
-      })
+      });
       that.setData({
         title: util.formatStr(res.data.data.title),
-        name: util.formatStr(res.data.data.name),        
-        remarks: res.data.data.remarks,
+        name: util.formatStr(res.data.data.name),       
+       
         photo: res.data.data.photo,
         deptName: res.data.data.company.name,        
       });

@@ -1,4 +1,4 @@
-<!--pages/index/homepage.wxml-->
+<import src="../../../../vendor/wxParse/wxParse.wxml"/>
 <view class='app'>
   <view class='header' style='background:{{color}}'>
       <view wx:if="{{photo != ''}}" class='face'>
@@ -21,7 +21,7 @@
         专家简介
       </view>
       <view class='info'>
-        <text>{{remarks}}</text>
+        <template is="wxParse" data="{{wxParseData:article.nodes}}"/>        
       </view>
     </view>   
   </view>

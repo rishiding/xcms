@@ -1,4 +1,5 @@
 /* pages/index/homepage.wxss */
+@import "../../../../vendor/wxParse/wxParse.wxss";
 .header{
   width: 92%;
   height: 320rpx;
