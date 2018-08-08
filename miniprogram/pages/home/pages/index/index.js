@@ -24,13 +24,28 @@ Page({
         server: config.server,
     },
     onLoad: function (options) {
-      var that = this;
-      if (app.globalData.hospitalid == ""){
+      var that = this;     
         if (options.scene == "" || options.scene == undefined || options.scene == null){
+          if (app.globalData.hospitalid == "") {
           wx.navigateTo({
             url: '../hospital/index',
           });
           return;
+          } else {
+            wx.setNavigationBarTitle({
+              title: app.hospitalData.name,
+            });
+            // 重新写入数据
+            that.setData({
+              name: app.hospitalData.name,
+              img: app.hospitalData.logo,
+              address: app.hospitalData.address,
+              contact: app.hospitalData.master,
+              mobile: app.hospitalData.phone,
+              slideList: app.hospitalData.banner
+            });
+          }    
+
 
         }else{
           app.globalData.hospitalid = options.scene;
@@ -44,7 +59,7 @@ Page({
                 latitude: res1.data.data.lat,
                 longitude: res1.data.data.lot
               },
-              coord_type: 3,//baidu经纬度
+              coord_type: 3,//baidu经纬度  转换
               success: function (res) {               
                 var location = res.result.location;
                 app.hospitalData.lat = location.lat;
@@ -84,21 +99,7 @@ Page({
             });   
           }, { "hospitalid": options.scene });
         }
-      }else{    
-       
-        wx.setNavigationBarTitle({
-          title: app.hospitalData.name,
-        });
-         // 重新写入数据
-        that.setData({
-          name: app.hospitalData.name,
-          img: app.hospitalData.logo,
-          address: app.hospitalData.address,
-          contact: app.hospitalData.master,
-          mobile: app.hospitalData.phone,
-          slideList: app.hospitalData.banner
-        });   
-      }    
+      
        
         // 新闻列表       
         util.AJAX("/category/news", function (res) {

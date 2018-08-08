@@ -24,12 +24,11 @@ Page({
     address: "",
     },
   onLoad: function () {
-    var that = this; 
-    
+    var that = this;     
       wx.setNavigationBarTitle({
         title: app.hospitalData.name,
-      })  
-      
+      });   
+          
       
       // 重新写入数据
       that.setData({

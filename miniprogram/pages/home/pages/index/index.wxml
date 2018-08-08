@@ -5,12 +5,12 @@
     </swiper-item>
 </swiper>
  <view class="menu">
-     <navigator open-type='reLaunch' url="/pages/home/pages/index/index">
+     <navigator open-type='reLaunch' url="/pages/home/pages/hospital/index">
       <view class="item">
         <view class="icon menu_bg_01">
           <image src="/images/home.png"></image>
         </view>
-        <text>首页</text>
+        <text>机构选择</text>
       </view>
     </navigator>
    
