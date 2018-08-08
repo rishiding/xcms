@@ -10,7 +10,7 @@
         <view class="icon menu_bg_01">
           <image src="/images/home.png"></image>
         </view>
-        <text>机构选择</text>
+        <text>机构列表</text>
       </view>
     </navigator>
    
