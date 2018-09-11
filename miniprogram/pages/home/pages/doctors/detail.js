@@ -13,6 +13,7 @@ Page({
     title:'',
     remarks: '',
     photo:'',
+    id:'',
     server:config.server,
     deptName:''
   },
@@ -23,6 +24,9 @@ Page({
   onLoad: function (options) {
     var that = this;
     var id = options.id;
+    if (options.hospid != null && options.hospid != undefined && options.hospid != "") {
+      util.setHospital(options.hospid);
+    }
     util.AJAX("/office/docInfo", function (res) {
       //console.log(res);
       WxParse.wxParse('article', 'html', res.data.data.remarks, that, 5);
@@ -34,7 +38,7 @@ Page({
       that.setData({
         title: util.formatStr(res.data.data.title),
         name: util.formatStr(res.data.data.name),       
-       
+        id: options.id,
         photo: res.data.data.photo,
         deptName: res.data.data.company.name,        
       });
@@ -42,48 +46,22 @@ Page({
  
   },
 
+  //分享
+  onShareAppMessage: function (res) {
+    var that = this;
+    return {
+      title: that.data.name,
+      path: '/pages/home/pages/doctors/detail?id=' + that.data.id + "&hospid=" + app.globalData.hospitalid,
+      success: function (res) {
+        // 转发成功
+      },
+      fail: function (res) {
+        // 转发失败
+      }
+    }
+  }
+
   
 
-  /**
-   * 生命周期函数--监听页面初次渲染完成
-   */
-  onReady: function () {
-
-  },
-
-
-  /**
-   * 生命周期函数--监听页面隐藏
-   */
-  onHide: function () {
-
-  },
-
-  /**
-   * 生命周期函数--监听页面卸载
-   */
-  onUnload: function () {
-
-  },
-
-  /**
-   * 页面相关事件处理函数--监听用户下拉动作
-   */
-  onPullDownRefresh: function () {
-
-  },
-
-  /**
-   * 页面上拉触底事件的处理函数
-   */
-  onReachBottom: function () {
-
-  },
-
-  /**
-   * 用户点击右上角分享
-   */
-  onShareAppMessage: function () {
-
-  }
+ 
 })

@@ -48,6 +48,7 @@ Page({
 
 
         }else{
+          util.setHospital(options.scene);
           app.globalData.hospitalid = options.scene;
           // 初始化全局医院数据
           util.AJAX("/office/getHospital", function (res1) {
@@ -117,6 +118,20 @@ Page({
         }, { "hospitalid": app.globalData.hospitalid ,pageSize:8}); 
         
     },
+    //分享
+  onShareAppMessage: function (res) {
+    var that = this;
+    return {
+      title: app.hospitalData.name,
+      path: '/pages/home/pages/index/index?scene=' + app.globalData.hospitalid,
+      success: function (res) {
+        // 转发成功
+      },
+      fail: function (res) {
+        // 转发失败
+      }
+    }
+  },
     //打电话
     makePhoneCall: function () {
         wx.makePhoneCall({

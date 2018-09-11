@@ -1,6 +1,7 @@
 // 加载配置文件
 const config = require('../config.js');
-
+const QQMapWX = require('qqmap-wx-jssdk.min.js');
+var app = getApp();
 function formatTime(date) {
 
     var year = date.getFullYear();
@@ -113,5 +114,52 @@ module.exports = {
             "dateDay": MONTH + "月" + DATE + "日 " + week[day]
         }
 
+    },
+    setHospital:function(hospitalid){
+      app.globalData.hospitalid = hospitalid;
+      // 初始化全局医院数据
+      wx.request({
+        url: config.appApiUrl + "/office/getHospital",
+        method: 'GET',
+        data: {"hospitalid": hospitalid},
+        header:  { "Content-Type": "application/json" },
+        success: function (res1) {
+         
+        var qqmapsdk = new QQMapWX({
+          key: 'ELVBZ-YMF6P-7RPDQ-L2SLM-MIYAJ-5NFW2'
+        });
+        qqmapsdk.reverseGeocoder({
+          location: {
+            latitude: res1.data.data.lat,
+            longitude: res1.data.data.lot
+          },
+          coord_type: 3,//baidu经纬度  转换
+          success: function (res) {
+            var location = res.result.location;
+            app.hospitalData.lat = location.lat;
+            app.hospitalData.lot = location.lng;
+          }
+        });
+
+        app.hospitalData.name = res1.data.data.name;
+        app.hospitalData.id = res1.data.data.id;
+        app.hospitalData.address = res1.data.data.address;
+        app.hospitalData.master = res1.data.data.master;
+        app.hospitalData.phone = res1.data.data.phone;
+        app.hospitalData.fax = res1.data.data.fax;
+        app.hospitalData.email = res1.data.data.email;
+        app.hospitalData.logo = res1.data.data.logo;
+
+        app.hospitalData.gradeName = res1.data.data.gradeName;
+        var side = res1.data.data.banner.split('|');
+        var side1 = new Array();
+        for (var i = 0; i < side.length; i++) {
+          if (side[i] != "") {
+            side1.push(side[i]);
+          }
+        }
+        app.hospitalData.banner = side1;
+        }
+      });
     },
 }
