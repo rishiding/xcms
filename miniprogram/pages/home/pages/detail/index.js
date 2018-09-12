@@ -34,6 +34,7 @@ Page({
             });
         },{"id": id});
     },
+
   //分享
   onShareAppMessage: function (res) {
     var that = this;
@@ -48,4 +49,5 @@ Page({
       }
     }
   }
+
 })

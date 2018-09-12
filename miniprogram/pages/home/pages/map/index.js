@@ -20,7 +20,7 @@ Page({
     }],
     contact: '',
     mobile: '',
-    email: "77219569@qq.com",
+    email: "delifu@qq.com",
     address: "",
     },
   onLoad: function () {
@@ -48,6 +48,20 @@ Page({
       });
    
   },
+  //分享
+  onShareAppMessage: function (res) {
+    var that = this;
+    return {
+      title: app.hospitalData.name,
+      path: '/pages/home/pages/index/index?scene=' + app.globalData.hospitalid,
+      success: function (res) {
+        // 转发成功
+      },
+      fail: function (res) {
+        // 转发失败
+      }
+    }
+  },
     //打电话
     makePhoneCall: function () {
         wx.makePhoneCall({
@@ -56,5 +70,14 @@ Page({
                 console.log("成功拨打电话")
             }
         })
-    }
+    },
+  makenav:function() {
+    wx.openLocation({
+      latitude: app.hospitalData.lat,
+      longitude: app.hospitalData.lot,
+      scale: 18,
+      name: app.hospitalData.name,
+      address: app.hospitalData.address
+    });
+  }
 })
