@@ -15,7 +15,20 @@ Page({
     loadMoreData: '加载更多……',
     server: config.server,
   },
-
+  //分享
+  onShareAppMessage: function (res) {
+    var that = this;
+    return {
+      title: app.hospitalData.name,
+      path: '/pages/home/pages/index/index?scene=' + app.globalData.hospitalid,
+      success: function (res) {
+        // 转发成功
+      },
+      fail: function (res) {
+        // 转发失败
+      }
+    }
+  },
   /**
    * 生命周期函数--监听页面加载
    */

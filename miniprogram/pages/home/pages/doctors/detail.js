@@ -24,9 +24,7 @@ Page({
   onLoad: function (options) {
     var that = this;
     var id = options.id;
-    if (options.hospid != null && options.hospid != undefined && options.hospid != "") {
-      util.setHospital(options.hospid);
-    }
+   
     util.AJAX("/office/docInfo", function (res) {
       //console.log(res);
       WxParse.wxParse('article', 'html', res.data.data.remarks, that, 5);
@@ -51,7 +49,7 @@ Page({
     var that = this;
     return {
       title: that.data.name,
-      path: '/pages/home/pages/doctors/detail?id=' + that.data.id + "&hospid=" + app.globalData.hospitalid,
+      path: '/pages/home/pages/index/index?scene=' + app.globalData.hospitalid,
       success: function (res) {
         // 转发成功
       },

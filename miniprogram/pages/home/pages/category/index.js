@@ -17,7 +17,20 @@ Page({
     pageSize: 8,
     server: config.server,
   },
- 
+  //分享
+  onShareAppMessage: function (res) {
+    var that = this;
+    return {
+      title: app.hospitalData.name,
+      path: '/pages/home/pages/index/index?scene=' + app.globalData.hospitalid,
+      success: function (res) {
+        // 转发成功
+      },
+      fail: function (res) {
+        // 转发失败
+      }
+    }
+  },
   onLoad: function (options) {
     // 页面初始化 options为页面跳转所带来的参数
     var that = this;

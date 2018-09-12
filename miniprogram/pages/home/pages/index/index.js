@@ -48,7 +48,7 @@ Page({
 
 
         }else{
-          util.setHospital(options.scene);
+         // util.setHospital(options.scene);
           app.globalData.hospitalid = options.scene;
           // 初始化全局医院数据
           util.AJAX("/office/getHospital", function (res1) {
